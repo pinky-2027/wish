@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 22nd Birthday Puriii! 🎂💗 | A Digital Birthday Surprise</title>
+  <meta name="description" content="A cute, interactive, personalized 22nd birthday surprise adventure for Puriii!">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2224%22>🎂</text></svg>">
+
+  <!-- Google Fonts: Handwritten & Rounded Cute Aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Background Canvas for Floating Pastel Hearts & Sparkles -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Sound Toggle (Web Audio Synthesized Chimes - zero external file dependency!) -->
+  <button id="sound-toggle-btn" class="sound-toggle" aria-label="Toggle Birthday Chimes">
+    <span class="sound-icon">🔔</span>
+    <span class="sound-text">Sound: ON</span>
+  </button>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- ========================================================
+         SCREEN ONE: THE BIRTHDAY WELCOME SCREEN
+         ======================================================== -->
+    <section id="screen-1" class="screen screen-active" aria-label="Birthday Welcome Screen">
+      <div class="screen-content welcome-card">
+        
+        <!-- Floating decorative corner elements -->
+        <div class="deco-item deco-cloud deco-top-left" aria-hidden="true">☁️✨</div>
+        <div class="deco-item deco-balloon deco-top-right" aria-hidden="true">🎈🌸</div>
+        <div class="deco-item deco-star deco-bottom-left" aria-hidden="true">⭐💖</div>
+        <div class="deco-item deco-butterfly deco-bottom-right" aria-hidden="true">🦋🎀</div>
+
+        <!-- Birthday Badge -->
+        <div class="badge-container">
+          <span class="birthday-badge">
+            <span class="badge-sparkle">✨</span>
+            LEVEL 22 UNLOCKED 🎮✨
+            <span class="badge-sparkle">✨</span>
+          </span>
+        </div>
+
+        <!-- Typewriter Animated Heading -->
+        <div class="title-container">
+          <h1 class="birthday-title" id="typewriter-heading">
+            <span id="typewriter-text"></span><span class="typewriter-cursor" id="typewriter-cursor">|</span>
+          </h1>
+          <div class="title-sparkles-burst" id="title-burst" aria-hidden="true"></div>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="birthday-subtitle">
+          Someone made a tiny birthday universe just for you… 🎀
+        </p>
+
+        <!-- Kawaii Central Animated Mascot & Cake Illustration -->
+        <div class="mascot-stage">
+          <div class="cute-bear-mascot" title="Birthday Bear">
+            <div class="bear-hat">🎉</div>
+            <div class="bear-face">
+              <div class="bear-ear ear-left"></div>
+              <div class="bear-ear ear-right"></div>
+              <div class="bear-eyes">
+                <span class="eye">^</span>
+                <span class="eye">^</span>
+              </div>
+              <div class="bear-blush blush-left"></div>
+              <div class="bear-blush blush-right"></div>
+              <div class="bear-muzzle">
+                <span class="nose">●</span>
+                <span class="mouth">ω</span>
+              </div>
+            </div>
+            <div class="bear-paws">
+              <span class="paw">🐾</span>
+              <span class="paw">🐾</span>
+            </div>
+          </div>
+
+          <!-- Animated Birthday Cake -->
+          <div class="kawaii-cake" title="Birthday Cake for 22">
+            <div class="cake-candle">
+              <div class="flame"></div>
+              <div class="candle-stick"></div>
+            </div>
+            <div class="cake-top-layer">
+              <span class="frosting-drip"></span>
+              <span class="cake-number">22</span>
+            </div>
+            <div class="cake-bottom-layer">
+              <span class="strawberry">🍓</span>
+              <span class="strawberry">🍓</span>
+              <span class="strawberry">🍓</span>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+
+          <!-- Cute Animated Sticker / Mascot -->
+          <div class="gif-container" id="welcome-gif-box">
+            <img src="assets/party_puppy.svg" 
+                 alt="Cute birthday celebration puppy with dog ears" 
+                 class="cute-gif-sticker"
+                 loading="eager">
+            <div class="gif-tag">Party Time! 🐶🎉</div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+          <button id="btn-enter-surprise" class="btn-primary pulse-btn" type="button">
+            <span class="btn-icon">🎁</span>
+            <span class="btn-text">Enter Your Birthday Surprise 🎁</span>
+            <span class="btn-sparkle-trail"></span>
+          </button>
+          <p class="cta-caption">
+            Psst… your surprise is waiting inside! 💌
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCREEN TWO: THE INTERACTIVE BIRTHDAY GAME
+         ======================================================== -->
+    <section id="screen-2" class="screen" aria-label="Interactive Birthday Adventure">
+      <div class="screen-content game-card">
+
+        <!-- Adventure Banner -->
+        <div class="adventure-header">
+          <div class="game-badge">MINI-QUEST 🎮</div>
+          <h2 class="game-title">Welcome to Puriii's Birthday Adventure! 🧸</h2>
+          <p class="game-mission">
+            Your mission: Unlock your birthday surprise before the cake disappears! 🎂
+          </p>
+        </div>
+
+        <!-- Progress Tracker Bar -->
+        <div class="quest-progress-box">
+          <div class="quest-steps">
+            <div class="step-item step-done" id="step-node-1">
+              <div class="step-circle">1</div>
+              <span class="step-label">Arrive</span>
+            </div>
+            <div class="step-connector active-bar" id="bar-1-2"></div>
+            <div class="step-item step-active" id="step-node-2">
+              <div class="step-circle">2</div>
+              <span class="step-label">Catch Hearts</span>
+            </div>
+            <div class="step-connector" id="bar-2-3"></div>
+            <div class="step-item" id="step-node-3">
+              <div class="step-circle">3</div>
+              <span class="step-label">Open Gift</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME STAGE 1: CATCH THE FLOATING HEARTS -->
+        <div id="game-stage-hearts" class="game-stage active-stage">
+          <div class="hearts-mission-hud">
+            <div class="hearts-counter-pill">
+              <span class="counter-icon">💖</span>
+              <span class="counter-label">Hearts Collected:</span>
+              <span id="hearts-count-num" class="counter-number">0</span>
+              <span class="counter-max">/ 5</span>
+            </div>
+            <div class="hearts-pips" id="hearts-pips-container">
+              <span class="pip" id="pip-1">🤍</span>
+              <span class="pip" id="pip-2">🤍</span>
+              <span class="pip" id="pip-3">🤍</span>
+              <span class="pip" id="pip-4">🤍</span>
+              <span class="pip" id="pip-5">🤍</span>
+            </div>
+          </div>
+
+          <p class="hearts-instruction">
+            Tap or click the floating pastel hearts below to catch all 5! 🫧👇
+          </p>
+
+          <!-- Interactive Catching Arena -->
+          <div class="heart-play-arena" id="heart-play-arena" aria-label="Catch hearts arena">
+            <div class="arena-background-grid"></div>
+            <!-- Hearts will be spawned dynamically by JavaScript -->
+          </div>
+
+          <!-- Accessibility / Quick Skip Alternative -->
+          <div class="game-helpers">
+            <button id="btn-skip-hearts" class="btn-secondary btn-sm" type="button" title="Skip to next stage">
+              Skip Mini-Game ⏩
+            </button>
+          </div>
+        </div>
+
+        <!-- GAME STAGE 2: UNLOCK THE BIRTHDAY GIFT -->
+        <div id="game-stage-gift" class="game-stage stage-hidden">
+          <div class="unlock-celebration-banner">
+            <div class="cheer-emoji">🎉✨</div>
+            <h3 class="cheer-title">All 5 Hearts Collected! You're Amazing! 💖</h3>
+            <p class="cheer-text">A special mystery package just landed for birthday boy Puri…</p>
+          </div>
+
+          <!-- Interactive 3D Animated Gift Box -->
+          <div class="gift-wrapper">
+            <div class="gift-box-interactive" id="mystery-gift-box" role="button" tabindex="0" aria-label="Mystery birthday gift box. Click to unwrap.">
+              <div class="gift-aura"></div>
+              <div class="gift-lid" id="gift-lid">
+                <div class="gift-bow">🎀</div>
+                <div class="gift-lid-base"></div>
+              </div>
+              <div class="gift-body">
+                <div class="gift-ribbon-v"></div>
+                <div class="gift-ribbon-h"></div>
+                <div class="gift-tag-label">To: Puriii 🏷️</div>
+              </div>
+            </div>
+            <p class="gift-prompt-text" id="gift-prompt-text">Tap the gift to unwrap your surprise! 🎀✨</p>
+          </div>
+
+          <!-- Unlocked Content (Revealed upon gift click) -->
+          <div id="gift-unlocked-content" class="gift-unlocked-panel hidden">
+            <div class="yay-badge">Yayyy! Your surprise is unlocked! 🎁💗</div>
+            
+            <div class="unlocked-gif-row">
+              <img src="assets/celebrate_cat.svg" 
+                   alt="Cute celebratory kawaii kitten" 
+                   class="mini-celebrate-gif"
+                   loading="eager">
+              <div class="unlocked-cheer-speech">
+                "Special delivery ready! Your exclusive 22nd birthday letter awaits!" 💌
+              </div>
+            </div>
+
+            <button id="btn-open-letter" class="btn-primary pulse-btn" type="button">
+              <span class="btn-icon">💌</span>
+              <span class="btn-text">Open Your Special Birthday Letter 💌</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCREEN THREE: THE PERSONAL BIRTHDAY WISH
+         ======================================================== -->
+    <section id="screen-3" class="screen" aria-label="Personal Birthday Wish">
+      <div class="screen-content letter-card">
+
+        <!-- Confetti Cannon Trigger Indicator -->
+        <div class="letter-header">
+          <div class="letter-seal">💌</div>
+          <h2 class="letter-main-title">A Little Birthday Letter for My Bestest Friend 💗</h2>
+          <p class="letter-subtitle">To the birthday boy turning 22… 🎂✨</p>
+        </div>
+
+        <!-- Attached Photo Section (EXCLUSIVELY ON SCREEN THREE) -->
+        <div class="photo-showcase-container">
+          <div class="photo-frame-outer">
+            <div class="photo-deco-heart deco-p-1">💖</div>
+            <div class="photo-deco-heart deco-p-2">🌸</div>
+            <div class="photo-deco-heart deco-p-3">✨</div>
+            <div class="photo-deco-heart deco-p-4">🎀</div>
+
+            <div class="photo-frame-inner">
+              <img src="assets/puri_and_me.jpg" 
+                   alt="A cute photograph of me and my best friend Puri celebrating together" 
+                   id="bestfriend-photo" 
+                   class="letter-photo" 
+                   loading="eager">
+            </div>
+
+            <div class="photo-caption-tag">
+              <span class="caption-pin">📌</span> Us & Countless Memories Together ♡
+            </div>
+          </div>
+        </div>
+
+        <!-- The Personal Birthday Letter (EXACT TEXT PRESERVED 100%) -->
+        <article class="birthday-letter-paper" id="birthday-letter-paper">
+          
+          <div class="paper-texture-glow"></div>
+
+          <!-- Paragraph 1 -->
+          <div class="letter-paragraph letter-salutation">
+            Happiest Birthday, Puriii! 💗
+          </div>
+
+          <!-- Paragraph 2 -->
+          <div class="letter-paragraph">
+            I never imagined I would get this close to a man in such a little time. Honestly speaking, you are the first male best friend of mine, and I am going to cherish this bond forever.
+          </div>
+
+          <!-- Paragraph 3 -->
+          <div class="letter-paragraph">
+            Ne epome theriyadhavan nu scene pottu sonnalum, you know you are my bestestest friend and will always have the same place in my heart as now, no matter how many miles I move away and how many new friends I make. Your place is still yours.
+          </div>
+
+          <!-- Paragraph 4 -->
+          <div class="letter-paragraph highlight-paragraph">
+            And na epome solradhu dha — stop smoking, health pathuko, drive safe.(My future kid's cute mama turns 22 today)
+          </div>
+
+          <!-- Paragraph 5 -->
+          <div class="letter-paragraph">
+            Once again, happy birthday, best friend! I hope this brings a smile to your face.
+          </div>
+
+          <!-- Paragraph 6 -->
+          <div class="letter-paragraph letter-signoff">
+            Nalikku pappom! 💗🎂🧸
+          </div>
+
+          <!-- Closing Credit Line -->
+          <div class="letter-footer-note">
+            Made with a little code, lots of care, and a whole lot of friendship. ♡
+          </div>
+
+        </article>
+
+        <!-- EXTRA CUTE SURPRISES ON THE FINAL SCREEN -->
+        <div class="final-surprises-section">
+
+          <!-- Surprise 1: One Last Birthday Surprise Button -->
+          <div class="surprise-box-wrapper">
+            <button id="btn-final-surprise" class="btn-surprise-pill" type="button">
+              <span class="spark-icon">✨</span>
+              One Last Birthday Surprise? 🎁
+              <span class="spark-icon">✨</span>
+            </button>
+            <div id="final-surprise-reveal" class="final-surprise-card hidden">
+              <div class="surprise-cake-float">🎂🎉</div>
+              <p class="surprise-message-text">
+                Officially Level 22! May this new chapter bring you happiness, adventures, good health, and countless reasons to smile. 🎂✨
+              </p>
+            </div>
+          </div>
+
+          <!-- Surprise 2: Interactive Floating Heart Popper -->
+          <div class="tap-heart-zone" id="tap-heart-zone" title="Click or tap to send love!">
+            <button id="btn-burst-hearts" class="heart-popper-btn" type="button">
+              <span class="huge-heart">💖</span>
+              <span class="heart-burst-label">Tap here for extra birthday love! 🫧</span>
+            </button>
+          </div>
+
+          <!-- Replay Button -->
+          <div class="replay-section">
+            <button id="btn-replay-experience" class="btn-secondary" type="button">
+              Relive Your Birthday Surprise ↻
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
