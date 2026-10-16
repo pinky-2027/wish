@@ -1,0 +1,5 @@
+puri_birthday_site.zip
+site_to_deploy/
+embed_assets.py
+cloudflared.exe
+*.log
